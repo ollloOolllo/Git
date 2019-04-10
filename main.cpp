@@ -33,10 +33,10 @@ int main()
 		if (kbhit()) char key = getch();
 		
 		// xoa con ran
-		setcolor(0);
+		setcolor(0); setfillstyle(1,0);
 		rectangle(a*18-18+1,b*18-18+1,a*18-1,b*18-1);
 		for (int i=0;i<leng;i++) 
-		rectangle(body[i].x*18-18+1,body[i].y*18-18+1,body[i].x*18-1,body[i].y*18-1);
+		bar(body[i].x*18-18+1,body[i].y*18-18+1,body[i].x*18-1,body[i].y*18-1);
 		
 		// dieu khien
 		if (GetAsyncKeyState(VK_RIGHT) && dx!=-1) {dx=1; dy=0;}
@@ -60,7 +60,7 @@ int main()
 		if (b>35) b=1; if (b<1) b=35;
 		
 		// neu ran an moi
-		if (a==mx && b==my) 
+		if (a==mx && b==my)
 		{
 			// xoa thuc an cu
 			setfillstyle(1,0);
@@ -68,9 +68,10 @@ int main()
 			
 			// doi vi tri thuc an
 			// tang kich thuoc ran
-			mx=rand()%50+1, my=rand()%30+1; 
 			leng++;
+			mx=rand()%50+1, my=rand()%30+1; 
 			
+						
 			// ve thuc an moi
 			setcolor(rand()%14+1); setfillstyle(1, rand()%14+1);
 			rectangle(mx*18-18+1, my*18-18+1, mx*18-1, my*18-1);
@@ -78,12 +79,15 @@ int main()
 		}
 		
 		// ve con ran
-		setcolor(9);
+		setcolor(9); setfillstyle(1, rand()%14+1);
 		for (int i=0;i<leng;i++) 
-		rectangle(body[i].x*18-18+1,body[i].y*18-18+1,body[i].x*18-1,body[i].y*18-1);
+		{
+			rectangle(body[i].x*18-18+2,body[i].y*18-18+2,body[i].x*18-2,body[i].y*18-2);
+			bar(body[i].x*18-18+3,body[i].y*18-18+3,body[i].x*18-3,body[i].y*18-3);
+		}
+		
 		setcolor(1);
 		rectangle(a*18-18+1,b*18-18+1,a*18-1,b*18-1);
-		
 		
 		Sleep(100);
 		
